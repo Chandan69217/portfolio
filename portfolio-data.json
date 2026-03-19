@@ -1,0 +1,393 @@
+{
+  "config": {
+    "title": "Chandan Sharma | Full-Stack Developer",
+    "description": {
+      "long": "Explore the portfolio of Chandan Sharma, a full-stack developer and creative technologist specializing in interactive web experiences, Mobile Application, and innovative projects. Discover my latest work, including Coding Neural Micro Mini Finance, The Finance Pro, Krishco, and more. Let's build something amazing together!",
+      "short": "Discover the portfolio of Chandan Sharma, a full-stack developer creating interactive web experiences and innovative projects."
+    },
+    "keywords": [
+      "Chandan",
+      "portfolio",
+      "full-stack developer",
+      "creative technologist",
+      "web development",
+      "3D animations",
+      "interactive websites",
+      "web design",
+      "GSAP",
+      "React",
+      "Next.js",
+      "Spline",
+      "Framer Motion"
+    ],
+    "author": "Chandan Sharma",
+    "email": "chandansharma69217@gmail.com",
+    "site": "https://www.google.com",
+    "githubUsername": "chandan69217",
+    "githubRepo": "3d-portfolio",
+    "resumeUrl": "https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing",
+    "social": {
+      "telegram": "https://t.me/chandan_03_09",
+      "linkedin": "https://www.linkedin.com/in/chandan-sharma-744083263/",
+      "instagram": "https://www.instagram.com/chandan_03_09/",
+      "facebook": "https://www.facebook.com/chandan.chandanraj.94/",
+      "github": "https://github.com/Chandan69217"
+    }
+  },
+  "experience": [
+    {
+      "id": 1,
+      "startDate": "Dec 2024",
+      "endDate": "Present",
+      "title": "Full Stack Engineer",
+      "company": "OmniNexus",
+      "description": [
+        "Developing scalable full-stack applications involved in complex systems.",
+        "Optimizing database performance and query efficiency.",
+        "Collaborating on architectural decisions and technical strategy."
+      ],
+      "skills": [
+        "nextjs",
+        "ts",
+        "postgres",
+        "docker",
+        "aws"
+      ]
+    },
+    {
+      "id": 2,
+      "startDate": "Apr 2022",
+      "endDate": "Dec 2024",
+      "title": "Freelance Developer",
+      "company": "Live & Learn",
+      "description": [
+        "Delivered custom web solutions for diverse clients.",
+        "Managed full project lifecycles from design to deployment.",
+        "Maintained high client satisfaction through effective communication."
+      ],
+      "skills": [
+        "react",
+        "nodejs",
+        "mongodb",
+        "tailwind",
+        "wordpress"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "financepro",
+      "category": "Investment",
+      "title": "Finance Pro",
+      "src": "/assets/projects-screenshots/finance-pro/landing.png",
+      "screenshots": [
+        "landing.png"
+      ],
+      "live": "https://chandan69217.github.io/finnace-pro-react/",
+      "github": "https://github.com/Chandan69217/finnace-pro-react.git",
+      "description": "A modern investment & finance management platform with responsive design, investment plan explorer, and user dashboard.",
+      "skills": {
+        "frontend": [
+          "ts",
+          "nextjs",
+          "tailwind",
+          "reactQuery",
+          "react"
+        ],
+        "backend": [
+          "node",
+          "express",
+          "python",
+          "postgres"
+        ]
+      }
+    },
+    {
+      "id": "portfolio",
+      "category": "Portfolio",
+      "title": "My Portfolio",
+      "src": "/assets/projects-screenshots/portfolio/landing.png",
+      "screenshots": [
+        "landing.png"
+      ],
+      "live": "/",
+      "github": "https://github.com/Chandan69217/3d-portfolio.git",
+      "description": "A creative 3D portfolio website with interactive animations, Spline 3D elements, and a space theme.",
+      "skills": {
+        "frontend": [
+          "ts",
+          "nextjs",
+          "shadcn",
+          "aceternity",
+          "framerMotion",
+          "tailwind",
+          "spline"
+        ],
+        "backend": []
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "reactQuery",
+      "name": "reactQuery",
+      "label": "React Query",
+      "shortDescription": "Fetching data like a pro, no cap! 📡🔥",
+      "color": "#ff4154",
+      "icon": "https://raw.githubusercontent.com/TanStack/query/main/packages/query-core/media/logo/logo-96x96.png",
+      "order": 24
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn",
+      "label": "Shadcn UI",
+      "shortDescription": "copy-paste but make it fashion 🎨📜",
+      "color": "#000000",
+      "icon": "https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/favicon.ico",
+      "order": 25
+    },
+    {
+      "id": "aceternity",
+      "name": "aceternity",
+      "label": "Aceternity UI",
+      "shortDescription": "animations that go dummy hard 🌪️✨",
+      "color": "#ffffff",
+      "icon": "https://ui.aceternity.com/logo.png",
+      "order": 26
+    },
+    {
+      "id": "framerMotion",
+      "name": "framerMotion",
+      "label": "Framer Motion",
+      "shortDescription": "making things move, respectfuly! 🎈💫",
+      "color": "#0055ff",
+      "icon": "https://raw.githubusercontent.com/framer/motion/main/packages/framer-motion/media/logo.png",
+      "order": 27
+    },
+    {
+      "id": "spline",
+      "name": "spline",
+      "label": "Spline 3D",
+      "shortDescription": "3D in the web, we logic-ing! 🎮🕹️",
+      "color": "#f0db4f",
+      "icon": "https://spline.design/static/media/logo.9247d48d.png",
+      "order": 28
+    },
+    {
+      "id": "js",
+      "name": "js",
+      "label": "JavaScript",
+      "shortDescription": "yeeting code into the DOM since '95, no cap! 💯🚀",
+      "color": "#f0db4f",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      "order": 0
+    },
+    {
+      "id": "ts",
+      "name": "ts",
+      "label": "TypeScript",
+      "shortDescription": "JavaScript's overachieving cousin who's always flexing 💯🔒",
+      "color": "#007acc",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      "order": 1
+    },
+    {
+      "id": "html",
+      "name": "html",
+      "label": "HTML",
+      "shortDescription": "the internet's granddad, still bussin' fr fr! 💀🔥",
+      "color": "#e34c26",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      "order": 2
+    },
+    {
+      "id": "css",
+      "name": "css",
+      "label": "CSS",
+      "shortDescription": "styling with the ultimate drip, no cap 💁‍♂️🔥",
+      "color": "#563d7c",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      "order": 3
+    },
+    {
+      "id": "react",
+      "name": "react",
+      "label": "React",
+      "shortDescription": "using use = useUsing('use') 💯🔥",
+      "color": "#61dafb",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      "order": 4
+    },
+    {
+      "id": "vue",
+      "name": "vue",
+      "label": "Vue",
+      "shortDescription": "the chill pill for your frontend, it hits different! 🟢😌",
+      "color": "#41b883",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+      "order": 5
+    },
+    {
+      "id": "nextjs",
+      "name": "nextjs",
+      "label": "Next.js",
+      "shortDescription": "the drama queen of front-end frameworks, and we stan! 👑📜",
+      "color": "#ffffff",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      "order": 6
+    },
+    {
+      "id": "tailwind",
+      "name": "tailwind",
+      "label": "Tailwind",
+      "shortDescription": "utility classes hitting different fr fr 🌪️🔥",
+      "color": "#38bdf8",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+      "order": 7
+    },
+    {
+      "id": "nodejs",
+      "name": "nodejs",
+      "label": "Node.js",
+      "shortDescription": "JavaScript said 'sike, I'm backend now', deadass! 🔙🔚",
+      "color": "#6cc24a",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      "order": 8
+    },
+    {
+      "id": "express",
+      "name": "express",
+      "label": "Express",
+      "shortDescription": "middlewares go dummy hard, no cap! 🚂💨",
+      "color": "#ffffff",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      "order": 9
+    },
+    {
+      "id": "postgres",
+      "name": "postgres",
+      "label": "PostgreSQL",
+      "shortDescription": "SQL but make it fashion, purr 💅🐘",
+      "color": "#336791",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+      "order": 10
+    },
+    {
+      "id": "mongodb",
+      "name": "mongodb",
+      "label": "MongoDB",
+      "shortDescription": "flexin' with that NoSQL drip, respectfully! 💪🍃",
+      "color": "#336791",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      "order": 11
+    },
+    {
+      "id": "git",
+      "name": "git",
+      "label": "Git",
+      "shortDescription": "the code's personal bodyguard, no cap! 🕵️‍♂️🔄",
+      "color": "#f1502f",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      "order": 12
+    },
+    {
+      "id": "github",
+      "name": "github",
+      "label": "GitHub",
+      "shortDescription": "sliding into those pull requests, IYKYK! 🐙",
+      "color": "#000000",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      "order": 13
+    },
+    {
+      "id": "prettier",
+      "name": "prettier",
+      "label": "Prettier",
+      "shortDescription": "making your code not a whole mess, thank u next 🧹✨",
+      "color": "#f7b93a",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prettier/prettier-original.svg",
+      "order": 14
+    },
+    {
+      "id": "npm",
+      "name": "npm",
+      "label": "NPM",
+      "shortDescription": "package manager said 'I gotchu fam', period! 📦💯",
+      "color": "#ffffff",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg",
+      "order": 15
+    },
+    {
+      "id": "firebase",
+      "name": "firebase",
+      "label": "Firebase",
+      "shortDescription": "your app's ultimate wingman, watch out for vendor lock-in! 🔥👌",
+      "color": "#ffca28",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+      "order": 16
+    },
+    {
+      "id": "wordpress",
+      "name": "wordpress",
+      "label": "WordPress",
+      "shortDescription": "the grandpa of CMS, still rocking that cane 🧓👴",
+      "color": "#007acc",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+      "order": 17
+    },
+    {
+      "id": "linux",
+      "name": "linux",
+      "label": "Linux",
+      "shortDescription": "where 'chmod 777' is the ultimate flex 🔓🙌",
+      "color": "#ffffff",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+      "order": 18
+    },
+    {
+      "id": "docker",
+      "name": "docker",
+      "label": "Docker",
+      "shortDescription": "The best containerization! 🐳🔥",
+      "color": "#2496ed",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      "order": 19
+    },
+    {
+      "id": "nginx",
+      "name": "nginx",
+      "label": "NginX",
+      "shortDescription": "reverse proxy go zoom zoom, sheesh! 🚗💨",
+      "color": "#008000",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
+      "order": 20
+    },
+    {
+      "id": "aws",
+      "name": "aws",
+      "label": "AWS",
+      "shortDescription": "always extra, making everything more complicated, period! 🌐👨‍💻",
+      "color": "#ff9900",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
+      "order": 21
+    },
+    {
+      "id": "vim",
+      "name": "vim",
+      "label": "Vim",
+      "shortDescription": "exit? In this economy? Ight, imma head out! Door🏃",
+      "color": "#e34c26",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg",
+      "order": 22
+    },
+    {
+      "id": "vercel",
+      "name": "vercel",
+      "label": "Vercel",
+      "shortDescription": "The triangle company, helps you deploy and go touch grass! 🚀🌿",
+      "color": "#6cc24a",
+      "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+      "order": 23
+    }
+  ]
+}

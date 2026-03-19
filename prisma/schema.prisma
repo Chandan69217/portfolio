@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Config {
+  id             Int       @id @default(1)
+  title          String
+  descriptionLong  String
+  descriptionShort String
+  keywords       String[]  // Array of keywords
+  author         String
+  email          String
+  site           String
+  githubUsername String
+  githubRepo     String
+  resumeUrl      String   @default("")
+  
+  // Relations
+  social         Social?
+}
+
+model SkillItem {
+  id               String   @id // e.g., "react"
+  name             String
+  label            String
+  shortDescription String
+  color            String?
+  icon             String
+  order            Int      @default(0)
+}
+
+model Social {
+  id        Int      @id @default(1)
+  telegram  String?
+  linkedin  String?
+  instagram String?
+  facebook  String?
+  github    String?
+
+  configId  Int   @unique
+  config    Config   @relation(fields: [configId], references: [id], onDelete: Cascade)
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  startDate   String
+  endDate     String
+  title       String
+  company     String
+  description String[] // List of bullet points
+  skills      String[] // List of skill IDs or names
+  
+  order       Int      @default(0) // Optional order if needed
+}
+
+model Project {
+  id          String   @id // e.g., "financepro"
+  category    String
+  title       String
+  src         String   @db.Text // Base64 image or URL could be long, so Text is safer
+  screenshots String[]
+  live        String
+  github      String
+  description String
+
+  frontendSkills String[]
+  backendSkills  String[]
+
+  order          Int      @default(0)
+}
