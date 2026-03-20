@@ -44,7 +44,7 @@ const links: Link[] = [
   {
     title: 'Manage',
     href: '/admin',
-    thumbnail: '/assets/nav-link-previews/projects.png'
+    thumbnail: '/assets/nav-link-previews/manage.png'
   }
 ];
 
