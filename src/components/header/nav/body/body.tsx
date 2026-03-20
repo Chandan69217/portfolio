@@ -34,12 +34,10 @@ export default function Body({
     setCurrentHref(pathname + hash);
   }, [params]);
 
+
   const getChars = (word: string) => {
-    const chars = word.split("").map((char, i) => (
-      <motion.span key={i}>
-        {char}
-      </motion.span>
-    ));
+    let chars: React.ReactNode[] = [];
+
     word.split("").forEach((char, i) => {
       chars.push(
         <motion.span
@@ -55,8 +53,10 @@ export default function Body({
         </motion.span>
       );
     });
+
     return chars;
   };
+
 
   return (
     <div className={cn(styles.body, "flex flex-col items-end md:flex-row")}>
