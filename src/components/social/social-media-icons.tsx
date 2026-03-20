@@ -4,7 +4,7 @@ import { usePortfolioData } from "@/contexts/PortfolioDataContext";
 import { useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { Button } from "../ui/button";
-import { SiGithub, SiInstagram } from "react-icons/si";
+import { SiFacebook, SiGithub, SiInstagram } from "react-icons/si";
 import { FaTelegramPlane, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
@@ -36,6 +36,11 @@ const SocialMediaButtons = () => {
       name: "Instagram",
       href: config.social.instagram,
       icon: <SiInstagram size={"24"} color={"#fff"} />,
+    },
+    {
+      name: "Facebook",
+      href: config.social.facebook,
+      icon: <SiFacebook size={"24"} color={"#fff"} />,
     },
   ];
 
