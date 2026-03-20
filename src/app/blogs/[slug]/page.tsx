@@ -7,6 +7,8 @@ import { ArrowLeft, CalendarDays, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import RevealAnimation from "@/components/reveal-animations";
 
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const posts = getBlogPosts();
   return posts.map((post) => ({
