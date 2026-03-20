@@ -4,8 +4,8 @@ import { usePortfolioData } from "@/contexts/PortfolioDataContext";
 import { useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { Button } from "../ui/button";
-import { SiGithub, SiInstagram, SiLinkedin} from "react-icons/si";
-import { FaTelegramPlane } from "react-icons/fa";
+import { SiGithub, SiInstagram } from "react-icons/si";
+import { FaTelegramPlane, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 const SocialMediaButtons = () => {
@@ -25,7 +25,7 @@ const SocialMediaButtons = () => {
     {
       name: "LinkedIn",
       href: config.social.linkedin,
-      icon: <SiLinkedin size={"24"} color={"#fff"} />,
+      icon: <FaLinkedin size={"24"} color={"#fff"} />,
     },
     {
       name: "Telegram",
