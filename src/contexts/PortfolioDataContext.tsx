@@ -26,6 +26,7 @@ export type PortfolioConfig = {
   githubUsername: string;
   githubRepo: string;
   resumeUrl: string;
+  profilePic?: string;
   social: SocialLinks;
 };
 
@@ -102,7 +103,10 @@ export function PortfolioDataProvider({ children }: { children: ReactNode }) {
 
   const fetchData = async () => {
     try {
-      const res = await fetch("/api/portfolio-data");
+      const res = await fetch("/api/portfolio-data", {
+        cache: "no-store",
+        next: { revalidate: 0 },
+      });
       const json = await res.json();
       setData(json);
     } catch (err) {

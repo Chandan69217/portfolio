@@ -76,10 +76,10 @@ const HeroSection = () => {
                   <p
                     className={cn(
                       "md:self-start md:mt-4 font-thin text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "cursor-default font-display sm:text-xl md:text-xl bg-clip-text max-w-xs md:max-w-sm lg:max-w-md xl:max-w-xl leading-relaxed"
                     )}
                   >
-                    A Full Stack Developer
+                    {config?.description?.short || "A Full Stack Developer"}
                   </p>
                 </BlurIn>
               </div>
@@ -114,6 +114,24 @@ const HeroSection = () => {
                       <p>pls 🥹 🙏</p>
                     </TooltipContent>
                   </Tooltip>
+
+                  <Tooltip delayDuration={300}>
+                    <TooltipTrigger asChild>
+                      <Link href="/about">
+                        <Button
+                          variant={"outline"}
+                          className="block w-full overflow-hidden"
+                        >
+                          About Me
+                        </Button>
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent side="bottom">
+                      <p>about me</p>
+                    </TooltipContent>
+                  </Tooltip>
+
+
                   <div className="flex items-center h-full gap-2">
                     <Link
                       href={config?.social.telegram || ""}

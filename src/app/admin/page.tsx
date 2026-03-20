@@ -70,7 +70,8 @@ export default function AdminPage() {
       } else if (res.status === 401) {
         router.push("/admin/login");
       } else {
-        showToast("Failed to save changes.", "error");
+        const errJson = await res.json().catch(() => ({}));
+        showToast(`Failed to save: ${errJson.error || res.statusText}`, "error");
       }
     } catch {
       showToast("Network error. Please try again.", "error");
@@ -214,6 +215,11 @@ export default function AdminPage() {
                   label="Resume PDF URL (Google Drive/Dropbox link)"
                   value={data.config.resumeUrl}
                   onChange={(v) => setData({ ...data, config: { ...data.config, resumeUrl: v } })}
+                />
+                <ImageUploadField
+                  label="Profile Picture (Base64)"
+                  value={data.config.profilePic || ""}
+                  onChange={(v) => setData({ ...data, config: { ...data.config, profilePic: v } })}
                 />
               </div>
               <TextareaField

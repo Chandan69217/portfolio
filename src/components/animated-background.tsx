@@ -56,6 +56,7 @@ const AnimatedBackground = () => {
       if (splineApp.getVariable("heading") && splineApp.getVariable("desc")) {
         splineApp.setVariable("heading", "");
         splineApp.setVariable("desc", "");
+        splineApp.setVariable("icon", "");
       }
     } else {
       if (!selectedSkillRef.current || selectedSkillRef.current.name !== e.target.name) {
@@ -65,6 +66,10 @@ const AnimatedBackground = () => {
           playPressSound();
           setSelectedSkill(skill);
           selectedSkillRef.current = skill;
+          // Set heading, desc, and icon variable to Spline
+          splineApp.setVariable("heading", skill.label);
+          splineApp.setVariable("desc", skill.shortDescription);
+          splineApp.setVariable("icon", skill.icon);
         }
       }
     }
@@ -88,6 +93,7 @@ const AnimatedBackground = () => {
       playReleaseSound();
       splineApp.setVariable("heading", "");
       splineApp.setVariable("desc", "");
+      splineApp.setVariable("icon", "");
     });
     splineApp.addEventListener("keyDown", (e) => {
       if (!splineApp || isInputFocused()) return;
@@ -98,6 +104,7 @@ const AnimatedBackground = () => {
         selectedSkillRef.current = skill;
         splineApp.setVariable("heading", skill.label);
         splineApp.setVariable("desc", skill.shortDescription);
+        splineApp.setVariable("icon", skill.icon);
       }
     });
     splineApp.addEventListener("mouseHover", handleMouseHover);
@@ -340,6 +347,7 @@ const AnimatedBackground = () => {
     // console.log(selectedSkill)
     splineApp.setVariable("heading", selectedSkill.label);
     splineApp.setVariable("desc", selectedSkill.shortDescription);
+    splineApp.setVariable("icon", selectedSkill.icon);
   }, [selectedSkill]);
 
   // Handle rotation and teardown animations based on active section
@@ -436,17 +444,31 @@ const AnimatedBackground = () => {
   }, [splineApp, isLoading, activeSection]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Spline
-        className="w-full h-full fixed"
-        ref={splineContainer}
-        onLoad={(app: Application) => {
-          setSplineApp(app);
-          bypassLoading();
-        }}
-        scene="/assets/skills-keyboard.spline"
-      />
-    </Suspense>
+    <div className="w-full h-full relative">
+      <Suspense fallback={<div>Loading...</div>}>
+        <Spline
+          className="w-full h-full fixed"
+          ref={splineContainer}
+          onLoad={(app: Application) => {
+            setSplineApp(app);
+            bypassLoading();
+          }}
+          scene="/assets/skills-keyboard.spline"
+        />
+      </Suspense>
+
+      {/* Floating HTML overlay to sync backend icons that the 3D model doesn't natively have */}
+      {selectedSkill && activeSection === "skills" && selectedSkill.icon && (
+        <div className="fixed bottom-12 right-12 z-[100] pointer-events-none flex items-center justify-center p-6 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] animate-in slide-in-from-bottom-8 fade-in duration-500 ease-out">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src={selectedSkill.icon} 
+            alt={selectedSkill.label} 
+            className="w-24 h-24 object-contain drop-shadow-2xl" 
+          />
+        </div>
+      )}
+    </div>
   );
 };
 

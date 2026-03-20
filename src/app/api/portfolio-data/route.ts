@@ -4,6 +4,8 @@ import fs from "fs";
 import path from "path";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const DATA_FILE = path.join(process.cwd(), "portfolio-data.json");
 
 function readFallbackData() {
@@ -54,6 +56,7 @@ async function getPortfolioDataFromDB() {
       githubUsername: config.githubUsername,
       githubRepo: config.githubRepo,
       resumeUrl: (config as any).resumeUrl,
+      profilePic: (config as any).profilePic || "/assets/me.jpg",
       social: {
         telegram: config.social?.telegram || "",
         linkedin: config.social?.linkedin || "",
@@ -117,6 +120,7 @@ async function savePortfolioDataToDB(body: any) {
         githubUsername: configData.githubUsername,
         githubRepo: configData.githubRepo,
         resumeUrl: (configData as any).resumeUrl || "",
+        profilePic: (configData as any).profilePic || "",
       } as any,
       create: {
         id: 1,
@@ -130,6 +134,7 @@ async function savePortfolioDataToDB(body: any) {
         githubUsername: configData.githubUsername,
         githubRepo: configData.githubRepo,
         resumeUrl: (configData as any).resumeUrl || "",
+        profilePic: (configData as any).profilePic || "",
       } as any,
     });
 
@@ -208,6 +213,9 @@ async function savePortfolioDataToDB(body: any) {
       });
     }
     console.log("Sync complete.");
+  }, {
+    maxWait: 10000,
+    timeout: 30000, // 30 seconds to allow massive Base64 images to process
   });
 }
 
@@ -215,17 +223,17 @@ export async function GET() {
   try {
     let dbData = await getPortfolioDataFromDB();
     
-    const fallback = readFallbackData();
-    const shouldSeed = !dbData || !dbData.skills || dbData.skills.length < (fallback?.skills?.length || 0);
-
-    if (shouldSeed && fallback) {
-      console.log("Database incomplete or skills missing, syncing from portfolio-data.json...");
-      await savePortfolioDataToDB(fallback);
-      dbData = await getPortfolioDataFromDB();
-    }
-    
-    if (!dbData) {
-      return NextResponse.json({ error: "No data available" }, { status: 404 });
+    // Instead of forcing a database overwrite, serve the fallback data strictly in READ-ONLY mode
+    // This prevents accidental data loss if the DB is temporarily empty during a Prisma regeneration
+    if (!dbData || !dbData.config || !dbData.config.title) {
+      console.log("Database incomplete or empty. Serving portfolio-data.json as READ-ONLY fallback...");
+      const fallback = readFallbackData();
+      
+      if (fallback) {
+        return NextResponse.json(fallback);
+      } else {
+        return NextResponse.json({ error: "No data available in database or fallback JSON." }, { status: 404 });
+      }
     }
     
     return NextResponse.json(dbData);
@@ -240,8 +248,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await req.json();
-  await savePortfolioDataToDB(body);
-  
-  return NextResponse.json({ success: true });
+  try {
+    const body = await req.json();
+    await savePortfolioDataToDB(body);
+    
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error("Error saving portfolio data:", error);
+    return NextResponse.json({ error: error.message || "Internal Server Error" }, { status: 500 });
+  }
 }
