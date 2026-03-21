@@ -57,6 +57,9 @@ async function getPortfolioDataFromDB() {
       githubRepo: config.githubRepo,
       resumeUrl: (config as any).resumeUrl,
       profilePic: (config as any).profilePic || "/assets/me.jpg",
+      snowfallEnabled: (config as any).snowfallEnabled || false,
+      snowfallColorLight: (config as any).snowfallColorLight || "#000000",
+      snowfallColorDark: (config as any).snowfallColorDark || "#ffffff",
       social: {
         telegram: config.social?.telegram || "",
         linkedin: config.social?.linkedin || "",
@@ -122,6 +125,9 @@ async function savePortfolioDataToDB(body: any) {
         githubRepo: configData.githubRepo,
         resumeUrl: (configData as any).resumeUrl || "",
         profilePic: (configData as any).profilePic || "",
+        snowfallEnabled: (configData as any).snowfallEnabled ?? false,
+        snowfallColorLight: (configData as any).snowfallColorLight || "#000000",
+        snowfallColorDark: (configData as any).snowfallColorDark || "#ffffff",
       } as any,
       create: {
         id: 1,
@@ -136,6 +142,9 @@ async function savePortfolioDataToDB(body: any) {
         githubRepo: configData.githubRepo,
         resumeUrl: (configData as any).resumeUrl || "",
         profilePic: (configData as any).profilePic || "",
+        snowfallEnabled: (configData as any).snowfallEnabled ?? false,
+        snowfallColorLight: (configData as any).snowfallColorLight || "#000000",
+        snowfallColorDark: (configData as any).snowfallColorDark || "#ffffff",
       } as any,
     });
 

@@ -253,6 +253,66 @@ export default function AdminPage() {
                 />
               </div>
             </SectionCard>
+            
+            <SectionCard title="Visual Effects" subtitle="Configure Snowfall background effect">
+              <div className="flex items-center justify-between p-4 border border-white/10 rounded-xl bg-white/5 mb-4">
+                <div>
+                  <h3 className="font-medium text-white">Enable Snowfall</h3>
+                  <p className="text-xs text-white/50">Show falling snow across your portfolio</p>
+                </div>
+                <button
+                  onClick={() => setData({ ...data, config: { ...data.config, snowfallEnabled: !data.config.snowfallEnabled } })}
+                  className={`w-12 h-6 rounded-full transition-colors relative flex items-center px-1 ${
+                    data.config.snowfallEnabled ? "bg-indigo-600" : "bg-white/20"
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 bg-white rounded-full shadow-md transition-transform ${
+                      data.config.snowfallEnabled ? "translate-x-6" : "translate-x-0"
+                    }`}
+                  />
+                </button>
+              </div>
+              
+              {data.config.snowfallEnabled && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-white/60 mb-2">Snow Color (Light Mode)</label>
+                    <div className="flex gap-3 items-center">
+                      <input
+                        type="color"
+                        value={data.config.snowfallColorLight || "#000000"}
+                        onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorLight: e.target.value } })}
+                        className="w-10 h-10 rounded cursor-pointer bg-transparent border-none p-0"
+                      />
+                      <input
+                        type="text"
+                        value={data.config.snowfallColorLight || "#000000"}
+                        onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorLight: e.target.value } })}
+                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm text-white/60 mb-2">Snow Color (Dark Mode)</label>
+                    <div className="flex gap-3 items-center">
+                      <input
+                        type="color"
+                        value={data.config.snowfallColorDark || "#ffffff"}
+                        onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorDark: e.target.value } })}
+                        className="w-10 h-10 rounded cursor-pointer bg-transparent border-none p-0"
+                      />
+                      <input
+                        type="text"
+                        value={data.config.snowfallColorDark || "#ffffff"}
+                        onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorDark: e.target.value } })}
+                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SectionCard>
           </div>
         )}
 

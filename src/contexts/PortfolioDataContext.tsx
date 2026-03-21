@@ -28,6 +28,9 @@ export type PortfolioConfig = {
   githubRepo: string;
   resumeUrl: string;
   profilePic?: string;
+  snowfallEnabled: boolean;
+  snowfallColorLight: string;
+  snowfallColorDark: string;
   social: SocialLinks;
 };
 

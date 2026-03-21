@@ -24,6 +24,11 @@ model Config {
   resumeUrl      String   @default("")
   profilePic     String?  @db.Text
   
+  // Snowfall config
+  snowfallEnabled  Boolean  @default(false)
+  snowfallColorLight String  @default("#000000") // Color when in light mode
+  snowfallColorDark  String  @default("#ffffff") // Color when in dark mode
+  
   // Relations
   social         Social?
 }
