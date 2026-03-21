@@ -118,24 +118,24 @@ const ProjectContents = ({ project }: { project: ProjectEntry }) => {
   const screenshots = project.screenshots || [];
 
   return (
-    <>
-      <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
+    <div className="flex flex-col flex-1 w-full h-full overflow-y-auto no-scrollbar">
+      <h4 className="text-xl md:text-3xl text-neutral-800 dark:text-neutral-100 font-bold text-center mb-6 px-4 shrink-0">
         {project.title}
       </h4>
 
       {/* Tech Stack */}
-      <div className="flex flex-col md:flex-row md:justify-evenly max-w-screen overflow-hidden md:overflow-visible">
+      <div className="flex flex-col md:flex-row md:justify-evenly w-full mt-2 shrink-0">
         {frontendSkills.length > 0 && (
-          <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
-            <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
+          <div className="flex flex-col justify-center items-center gap-3 mb-6 md:mb-8">
+            <p className="text-xs md:text-sm font-semibold text-neutral-500 uppercase tracking-widest">
               Frontend
             </p>
             <FloatingDock items={frontendSkills} />
           </div>
         )}
         {backendSkills.length > 0 && (
-          <div className="flex flex-row md:flex-col-reverse justify-center items-center gap-2 text-3xl mb-8">
-            <p className="text-sm mt-1 text-neutral-600 dark:text-neutral-500">
+          <div className="flex flex-col justify-center items-center gap-3 mb-8">
+            <p className="text-xs md:text-sm font-semibold text-neutral-500 uppercase tracking-widest">
               Backend
             </p>
             <FloatingDock items={backendSkills} />
@@ -145,17 +145,17 @@ const ProjectContents = ({ project }: { project: ProjectEntry }) => {
 
       {/* Description */}
       {project.description && (
-        <p className="font-mono mt-2 mb-8 text-neutral-600 dark:text-neutral-300 leading-relaxed">
+        <p className="text-sm md:text-base font-mono mb-8 text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-2xl mx-auto break-words px-2 md:px-0 shrink-0">
           {project.description}
         </p>
       )}
 
       {/* Screenshots Gallery */}
       {screenshots.length > 0 && (
-        <div className="mt-4 flex flex-col gap-4">
+        <div className="mt-4 flex flex-col gap-4 shrink-0 px-2 md:px-0 pb-4">
           <p className="text-sm font-semibold text-neutral-400 uppercase tracking-widest mb-2">Screenshots</p>
           {screenshots.map((src, idx) => (
-            <div key={idx} className="w-full rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700">
+            <div key={idx} className="w-full rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}
@@ -166,7 +166,7 @@ const ProjectContents = ({ project }: { project: ProjectEntry }) => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
