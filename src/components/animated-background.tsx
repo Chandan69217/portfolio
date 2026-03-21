@@ -461,10 +461,10 @@ const AnimatedBackground = () => {
       {selectedSkill && activeSection === "skills" && selectedSkill.icon && (
         <div className="fixed bottom-12 right-12 z-[100] pointer-events-none flex items-center justify-center p-6 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] animate-in slide-in-from-bottom-8 fade-in duration-500 ease-out">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            src={selectedSkill.icon} 
-            alt={selectedSkill.label} 
-            className="w-24 h-24 object-contain drop-shadow-2xl" 
+          <img
+            src={selectedSkill.icon}
+            alt={selectedSkill.label}
+            className="w-24 h-24 object-contain drop-shadow-2xl"
           />
         </div>
       )}

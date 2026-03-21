@@ -68,15 +68,35 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { open } = useModal();
+  const { open, setOpen } = useModal();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") setOpen(false);
-      });
+    if (open) {
+      // Focus the scroll container when modal opens so keyboard scrolling works immediately
+      setTimeout(() => {
+        scrollRef.current?.focus();
+      }, 100);
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setOpen(false);
+        }
+        // If the user tries to scroll with keyboard and focus is lost to the background,
+        // prevent it and refocus the modal.
+        if (["ArrowUp", "ArrowDown", " ", "PageUp", "PageDown", "Home", "End"].includes(e.key)) {
+          if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+            e.preventDefault();
+            scrollRef.current?.focus();
+          }
+        }
+      };
+      
+      document.addEventListener("keydown", handleKeyDown, { capture: true });
+      return () => document.removeEventListener("keydown", handleKeyDown, { capture: true });
     }
-  }, []);
+  }, [open, setOpen]);
   useEffect(() => {
     if (!open) {
       document.body.style.overflow = "auto";
@@ -90,8 +110,6 @@ export const ModalBody = ({
     window.dispatchEvent(new CustomEvent("modal-open"));
   }, [open]);
 
-  const modalRef = useRef<HTMLDivElement>(null);
-  const { setOpen } = useModal();
   useOutsideClick(modalRef, () => setOpen(false));
 
   // Removed native capture-phase wheel listener to allow normal scroll behavior
@@ -156,12 +174,15 @@ export const ModalBody = ({
             <CloseIcon />
             {/* Scrollable content area — no scrollbar, native overflow scroll */}
             <div
+              ref={scrollRef}
+              tabIndex={0}
               data-lenis-prevent
-              className="flex-1 overflow-y-auto overscroll-contain no-scrollbar scroll-auto"
+              className="flex-1 overflow-y-auto overscroll-contain no-scrollbar scroll-auto outline-none"
               style={{
                 minHeight: 0,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
+                transform: "translateZ(0)",
               }}
             >
               <div className="flex flex-col min-h-full">

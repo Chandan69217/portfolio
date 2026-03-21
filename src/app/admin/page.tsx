@@ -115,28 +115,29 @@ export default function AdminPage() {
       )}
 
       {/* Header */}
-      <div className="border-b border-white/10 bg-white/5 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
+      <div className="border-b border-white/10 bg-white/5 backdrop-blur-md sticky top-0 z-40 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </div>
-            <span className="font-bold text-white">Portfolio Admin</span>
+            <span className="font-bold text-white hidden sm:block">Portfolio Admin</span>
+            <span className="font-bold text-white sm:hidden">Admin</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="/"
               target="_blank"
-              className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1"
+              className="text-sm text-white/50 hover:text-white transition-colors hidden sm:flex items-center gap-1"
             >
-              View Portfolio ↗
+              View ↗
             </a>
             <button
               onClick={handleSave}
               disabled={saving}
-              className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all flex items-center gap-2"
+              className="bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-all flex items-center gap-1 sm:gap-2 shrink-0"
             >
               {saving ? (
                 <>
@@ -144,13 +145,15 @@ export default function AdminPage() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  Saving...
+                  <span className="hidden sm:inline">Saving...</span>
                 </>
-              ) : "Save Changes"}
+              ) : (
+                "Save"
+              )}
             </button>
             <button
               onClick={handleLogout}
-              className="text-sm text-white/40 hover:text-white/80 px-3 py-2 rounded-lg border border-white/10 hover:border-white/20 transition-all"
+              className="text-xs sm:text-sm text-white/40 hover:text-white/80 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg border border-white/10 hover:border-white/20 transition-all shrink-0"
             >
               Logout
             </button>
@@ -158,14 +161,14 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full overflow-hidden">
         {/* Tabs */}
-        <div className="flex gap-1 bg-white/5 p-1 rounded-xl border border-white/10 mb-8 w-fit">
+        <div className="flex gap-1 bg-white/5 p-1 rounded-xl border border-white/10 mb-6 sm:mb-8 w-full md:w-fit overflow-x-auto no-scrollbar">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all shrink-0 whitespace-nowrap ${
                 activeTab === tab
                   ? "bg-indigo-600 text-white shadow-lg"
                   : "text-white/50 hover:text-white"
