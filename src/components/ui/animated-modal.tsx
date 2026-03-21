@@ -157,21 +157,22 @@ export const ModalBody = ({
             {/* Scrollable content area — no scrollbar, native overflow scroll */}
             <div
               data-lenis-prevent
-              className="flex-1 overflow-y-auto overscroll-contain no-scrollbar"
+              className="flex-1 overflow-y-auto overscroll-contain no-scrollbar scroll-auto"
               style={{
                 minHeight: 0,
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
               }}
             >
-              {contentChildren}
-            </div>
-            {/* Sticky footer — always at bottom, never scrolls */}
-            {footerChildren.length > 0 && (
-              <div className="flex-shrink-0">
-                {footerChildren}
+              <div className="flex flex-col min-h-full">
+                {contentChildren}
+                {footerChildren.length > 0 && (
+                  <div className="mt-auto sticky bottom-0 z-20">
+                    {footerChildren}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </motion.div>
         </motion.div>
       )}
