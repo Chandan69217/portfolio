@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: portfolio-socket
+    runtime: node
+    plan: free
+    buildCommand: npm install && npx prisma generate
+    startCommand: npm run socket:start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_ENV
+        value: production
