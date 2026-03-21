@@ -80,43 +80,21 @@ export const ModalBody = ({
   useEffect(() => {
     if (!open) {
       document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
       window.dispatchEvent(new CustomEvent("modal-close"));
       return;
     }
 
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     window.dispatchEvent(new CustomEvent("modal-open"));
-
-    // Block wheel events that originate OUTSIDE the modal at the capture phase.
-    // Events inside the modal pass through, so overflow-y-auto scrolls natively.
-    const blockOutsideWheel = (e: WheelEvent) => {
-      if (modalRef.current && modalRef.current.contains(e.target as Node)) return; // inside modal → allow
-      e.preventDefault();
-      e.stopPropagation();
-    };
-    document.addEventListener("wheel", blockOutsideWheel, { capture: true, passive: false });
-    return () => document.removeEventListener("wheel", blockOutsideWheel, { capture: true });
   }, [open]);
 
   const modalRef = useRef<HTMLDivElement>(null);
   const { setOpen } = useModal();
   useOutsideClick(modalRef, () => setOpen(false));
 
-  // Native capture-phase wheel listener on the modal container.
-  // This runs BEFORE Lenis' bubble-phase document listener, so
-  // stopPropagation here prevents Lenis from ever seeing the event.
-  useEffect(() => {
-    const el = modalRef.current;
-    if (!el) return;
-    const stopWheel = (e: WheelEvent) => {
-      // Allow the event to bubble up from children (like the scrollable div)
-      // but stop it before it reaches the document/Lenis.
-      e.stopPropagation();
-    };
-    // Use capture: false (bubble phase) so children get the event first.
-    el.addEventListener("wheel", stopWheel, { capture: false, passive: true });
-    return () => el.removeEventListener("wheel", stopWheel, { capture: false });
-  }, [open]); // re-attach when modal opens (ref mounts)
+  // Removed native capture-phase wheel listener to allow normal scroll behavior
 
   // Separate footer children from content children
   const childArray = React.Children.toArray(children);
@@ -152,8 +130,6 @@ export const ModalBody = ({
               "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden",
               className
             )}
-            onWheel={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
             initial={{
               opacity: 0,
               scale: 0.5,
