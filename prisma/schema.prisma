@@ -45,6 +45,7 @@ model Social {
   instagram String?
   facebook  String?
   github    String?
+  phone     String?
 
   configId  Int   @unique
   config    Config   @relation(fields: [configId], references: [id], onDelete: Cascade)
@@ -76,4 +77,16 @@ model Project {
   backendSkills  String[]
 
   order          Int      @default(0)
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  sessionId String
+  username  String
+  avatar    String   @db.Text
+  color     String?
+  content   String   @db.Text
+  flag      String   @default("🌍")
+  country   String   @default("Global")
+  createdAt DateTime @default(now())
 }

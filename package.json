@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"node socket-server.js\"",
     "build": "prisma generate && next build",
-    "start": "next start",
+    "start": "concurrently \"next start\" \"node socket-server.js\"",
     "lint": "next lint"
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
     "date-fns": "^4.1.0",
     "devtools-detector": "^2.0.22",
     "embla-carousel-react": "^8.1.8",
@@ -50,6 +51,7 @@
     "react-use-measure": "^2.1.7",
     "resend": "^4.0.0",
     "sass": "^1.77.8",
+    "socket.io": "^4.8.3",
     "socket.io-client": "^4.7.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -65,7 +67,7 @@
     "eslint": "^9.10.0",
     "eslint-config-next": "^16.1.6",
     "postcss": "^8",
-    "prisma": "6.19.2",
+    "prisma": "^6.12.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

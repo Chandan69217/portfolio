@@ -75,14 +75,14 @@ export default function RootLayout({
         {/* <Analytics /> */}
       </head>
       <body>
-        <Providers>
-          <PortfolioDataProvider>
+        <PortfolioDataProvider>
+          <Providers>
             <Header />
             {children}
             <Footer />
             <AppOverlays />
-          </PortfolioDataProvider>
-        </Providers>
+          </Providers>
+        </PortfolioDataProvider>
       </body>
     </html>
   );

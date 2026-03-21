@@ -11,6 +11,7 @@ import { AnimatePresence } from "framer-motion";
 
 import Loader from "./loader";
 import gsap from "gsap";
+import { usePortfolioData } from "@/contexts/PortfolioDataContext";
 
 type PreloaderContextType = {
   isLoading: boolean;
@@ -42,11 +43,13 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
   const [loadingPercent, setLoadingPercent] = useState(0);
   const loadingTween = useRef<gsap.core.Tween | null>(null);
 
+  const { loading: dataLoading } = usePortfolioData();
+  const [gsapFinished, setGsapFinished] = useState(false);
+
   const bypassLoading = () => {
     loadingTween.current?.progress(0.99).kill();
     setLoadingPercent(100);
-    setIsLoading(false);
-    // console.log("killed", loadingTween.current);
+    setGsapFinished(true);
   };
   const loadingPercentRef = useRef<{ value: number }>({ value: 0 });
   useEffect(() => {
@@ -58,12 +61,16 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
         setLoadingPercent(loadingPercentRef.current.value);
       },
       onComplete: () => {
-        setIsLoading(false);
-        // observe: this change has not been observed for errors.
-        // window.scrollTo(0, 0);
+        setGsapFinished(true);
       },
     });
   }, []);
+
+  useEffect(() => {
+    if (gsapFinished && !dataLoading) {
+      setIsLoading(false);
+    }
+  }, [gsapFinished, dataLoading]);
 
   return (
     <preloaderContext.Provider

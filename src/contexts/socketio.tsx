@@ -69,6 +69,9 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
     const socket = io(process.env.NEXT_PUBLIC_WS_URL!, {
       auth: {
         sessionId: localStorage.getItem(SESSION_ID_KEY), // send on reconnect to restore session
+        username: localStorage.getItem("username"),
+        avatar: localStorage.getItem("avatar"),
+        color: localStorage.getItem("color"),
       },
     });
     setSocket(socket);

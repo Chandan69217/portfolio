@@ -63,6 +63,7 @@ async function getPortfolioDataFromDB() {
         instagram: config.social?.instagram || "",
         facebook: config.social?.facebook || "",
         github: config.social?.github || "",
+        phone: config.social?.phone || "",
       },
     },
     experience: experiences.map((exp) => ({
@@ -148,6 +149,7 @@ async function savePortfolioDataToDB(body: any) {
           instagram: configData.social.instagram,
           facebook: configData.social.facebook,
           github: configData.social.github,
+          phone: configData.social.phone,
         },
         create: {
           configId: config.id,
@@ -156,6 +158,7 @@ async function savePortfolioDataToDB(body: any) {
           instagram: configData.social.instagram,
           facebook: configData.social.facebook,
           github: configData.social.github,
+          phone: configData.social.phone,
         },
       });
     }

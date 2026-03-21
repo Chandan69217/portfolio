@@ -15,14 +15,26 @@ export const useSounds = () => {
         audioContextRef.current = ctx;
 
         const response = await fetch('/assets/keycap-sounds/press.mp3');
-        const arrayBuffer = await response.arrayBuffer();
-        const decodedBuffer = await ctx.decodeAudioData(arrayBuffer);
-        pressBufferRef.current = decodedBuffer;
+        if (response.ok) {
+          const arrayBuffer = await response.arrayBuffer();
+          try {
+            const decodedBuffer = await ctx.decodeAudioData(arrayBuffer);
+            pressBufferRef.current = decodedBuffer;
+          } catch (e) {
+            console.warn("Could not decode press.mp3", e);
+          }
+        }
 
         const releaseResponse = await fetch('/assets/keycap-sounds/release.mp3');
-        const releaseArrayBuffer = await releaseResponse.arrayBuffer();
-        const releaseDecodedBuffer = await ctx.decodeAudioData(releaseArrayBuffer);
-        releaseBufferRef.current = releaseDecodedBuffer;
+        if (releaseResponse.ok) {
+          const releaseArrayBuffer = await releaseResponse.arrayBuffer();
+          try {
+            const releaseDecodedBuffer = await ctx.decodeAudioData(releaseArrayBuffer);
+            releaseBufferRef.current = releaseDecodedBuffer;
+          } catch (e) {
+            console.warn("Could not decode release.mp3", e);
+          }
+        }
       } catch (error) {
         console.error("Failed to load keycap sound", error);
       }

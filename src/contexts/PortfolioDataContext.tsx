@@ -14,6 +14,7 @@ export type SocialLinks = {
   instagram: string;
   facebook: string;
   github: string;
+  phone: string;
 };
 
 export type PortfolioConfig = {
