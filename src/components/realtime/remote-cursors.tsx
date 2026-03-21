@@ -16,6 +16,17 @@ const RemoteCursors = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const { x, y } = useMouse({ allowPage: true });
   useEffect(() => {
+    if (!socket) return;
+    // Always listen for user list updates regardless of device type
+    socket.on("users-updated", (data: User[]) => {
+      setUsers(data);
+    });
+    return () => {
+      socket.off("users-updated");
+    };
+  }, [socket]);
+
+  useEffect(() => {
     if (typeof window === "undefined" || !socket || isMobile) return;
     socket.on("cursor-changed", (data) => {
       setUsers((prev: User[]) => {
@@ -31,9 +42,6 @@ const RemoteCursors = () => {
         }
         return newUsers;
       });
-    });
-    socket.on("users-updated", (data: User[]) => {
-      setUsers(data);
     });
     return () => {
       socket.off("cursor-changed");
