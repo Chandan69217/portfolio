@@ -87,8 +87,8 @@ export default function AdminPage() {
 
   if (loading || !data) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <div className="flex items-center gap-3 text-white/50">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] flex items-center justify-center">
+        <div className="flex items-center gap-3 dark:text-white/50 text-slate-500">
           <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -100,14 +100,14 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] font-sans text-white">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0a0a] font-sans text-slate-900 dark:text-white">
       {/* Toast */}
       {toast && (
         <div
           className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl text-sm font-medium shadow-xl transition-all ${
             toast.type === "success"
-              ? "bg-emerald-600 text-white"
-              : "bg-red-600 text-white"
+              ? "bg-emerald-600 text-slate-900 dark:text-white"
+              : "bg-red-600 text-slate-900 dark:text-white"
           }`}
         >
           {toast.msg}
@@ -115,22 +115,31 @@ export default function AdminPage() {
       )}
 
       {/* Header */}
-      <div className="border-b border-white/10 bg-white/5 backdrop-blur-md sticky top-0 z-40 w-full">
+      <div className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md sticky top-0 z-40 w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </div>
-            <span className="font-bold text-white hidden sm:block">Portfolio Admin</span>
-            <span className="font-bold text-white sm:hidden">Admin</span>
+            {data?.config?.profilePic ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={data.config.profilePic}
+                alt="Avatar"
+                className="w-8 h-8 rounded-full object-cover shrink-0"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+            )}
+            <span className="font-bold text-slate-900 dark:text-white hidden sm:block">Portfolio Admin</span>
+            <span className="font-bold text-slate-900 dark:text-white sm:hidden">Admin</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="/"
               target="_blank"
-              className="text-sm text-white/50 hover:text-white transition-colors hidden sm:flex items-center gap-1"
+              className="text-sm dark:text-white/50 text-slate-500 hover:text-slate-900 dark:text-white transition-colors hidden sm:flex items-center gap-1"
             >
               View ↗
             </a>
@@ -153,7 +162,7 @@ export default function AdminPage() {
             </button>
             <button
               onClick={handleLogout}
-              className="text-xs sm:text-sm text-white/40 hover:text-white/80 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg border border-white/10 hover:border-white/20 transition-all shrink-0"
+              className="text-xs sm:text-sm dark:text-white/40 text-slate-500 hover:dark:text-white/80 text-black/80 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg border border-slate-200 dark:border-white/10 hover:border-slate-200 dark:border-white/20 transition-all shrink-0"
             >
               Logout
             </button>
@@ -163,15 +172,15 @@ export default function AdminPage() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full overflow-hidden">
         {/* Tabs */}
-        <div className="flex gap-1 bg-white/5 p-1 rounded-xl border border-white/10 mb-6 sm:mb-8 w-full md:w-fit overflow-x-auto no-scrollbar">
+        <div className="flex gap-1 bg-white dark:bg-white/5 p-1 rounded-xl border border-slate-200 dark:border-white/10 mb-6 sm:mb-8 w-full md:w-fit overflow-x-auto no-scrollbar">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all shrink-0 whitespace-nowrap ${
                 activeTab === tab
-                  ? "bg-indigo-600 text-white shadow-lg"
-                  : "text-white/50 hover:text-white"
+                  ? "bg-indigo-600 text-slate-900 dark:text-white shadow-lg"
+                  : "dark:text-white/50 text-slate-500 hover:text-slate-900 dark:text-white"
               }`}
             >
               {tab}
@@ -242,7 +251,7 @@ export default function AdminPage() {
                 rows={4}
               />
               <div>
-                <label className="block text-sm text-white/60 mb-2">Keywords (comma-separated)</label>
+                <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Keywords (comma-separated)</label>
                 <input
                   type="text"
                   value={data.config.keywords.join(", ")}
@@ -252,21 +261,21 @@ export default function AdminPage() {
                       config: { ...data.config, keywords: e.target.value.split(",").map((k) => k.trim()) },
                     })
                   }
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                  className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
                 />
               </div>
             </SectionCard>
             
             <SectionCard title="Visual Effects" subtitle="Configure Snowfall background effect">
-              <div className="flex items-center justify-between p-4 border border-white/10 rounded-xl bg-white/5 mb-4">
+              <div className="flex items-center justify-between p-4 border border-slate-200 dark:border-white/10 rounded-xl bg-white dark:bg-white/5 mb-4">
                 <div>
-                  <h3 className="font-medium text-white">Enable Snowfall</h3>
-                  <p className="text-xs text-white/50">Show falling snow across your portfolio</p>
+                  <h3 className="font-medium text-slate-900 dark:text-white">Enable Snowfall</h3>
+                  <p className="text-xs dark:text-white/50 text-slate-500">Show falling snow across your portfolio</p>
                 </div>
                 <button
                   onClick={() => setData({ ...data, config: { ...data.config, snowfallEnabled: !data.config.snowfallEnabled } })}
                   className={`w-12 h-6 rounded-full transition-colors relative flex items-center px-1 ${
-                    data.config.snowfallEnabled ? "bg-indigo-600" : "bg-white/20"
+                    data.config.snowfallEnabled ? "bg-indigo-600" : "dark:bg-white/20 bg-black/20"
                   }`}
                 >
                   <div
@@ -280,7 +289,7 @@ export default function AdminPage() {
               {data.config.snowfallEnabled && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm text-white/60 mb-2">Snow Color (Light Mode)</label>
+                    <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Snow Color (Light Mode)</label>
                     <div className="flex gap-3 items-center">
                       <input
                         type="color"
@@ -292,12 +301,12 @@ export default function AdminPage() {
                         type="text"
                         value={data.config.snowfallColorLight || "#000000"}
                         onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorLight: e.target.value } })}
-                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
+                        className="flex-1 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm text-white/60 mb-2">Snow Color (Dark Mode)</label>
+                    <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Snow Color (Dark Mode)</label>
                     <div className="flex gap-3 items-center">
                       <input
                         type="color"
@@ -309,7 +318,7 @@ export default function AdminPage() {
                         type="text"
                         value={data.config.snowfallColorDark || "#ffffff"}
                         onChange={(e) => setData({ ...data, config: { ...data.config, snowfallColorDark: e.target.value } })}
-                        className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
+                        className="flex-1 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm uppercase"
                       />
                     </div>
                   </div>
@@ -399,7 +408,7 @@ export default function AdminPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-white/60 mb-2">Description (one item per line)</label>
+                  <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Description (one item per line)</label>
                   <textarea
                     rows={4}
                     value={exp.description.join("\n")}
@@ -408,11 +417,11 @@ export default function AdminPage() {
                       updated[i] = { ...updated[i], description: e.target.value.split("\n") };
                       setData({ ...data, experience: updated });
                     }}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm resize-none"
+                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm resize-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-white/60 mb-2">Skills (comma-separated)</label>
+                  <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Skills (comma-separated)</label>
                   <input
                     type="text"
                     value={exp.skills.join(", ")}
@@ -421,7 +430,7 @@ export default function AdminPage() {
                       updated[i] = { ...updated[i], skills: e.target.value.split(",").map((s) => s.trim()) };
                       setData({ ...data, experience: updated });
                     }}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
                   />
                 </div>
               </SectionCard>
@@ -445,7 +454,7 @@ export default function AdminPage() {
                   ],
                 })
               }
-              className="w-full border border-dashed border-white/20 hover:border-indigo-500/50 text-white/40 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
+              className="w-full border border-dashed border-slate-200 dark:border-white/20 hover:border-indigo-500/50 dark:text-white/40 text-slate-500 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
             >
               <span className="text-lg">+</span> Add Experience
             </button>
@@ -593,7 +602,7 @@ export default function AdminPage() {
                   ],
                 })
               }
-              className="w-full border border-dashed border-white/20 hover:border-indigo-500/50 text-white/40 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
+              className="w-full border border-dashed border-slate-200 dark:border-white/20 hover:border-indigo-500/50 dark:text-white/40 text-slate-500 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
             >
               <span className="text-lg">+</span> Add Project
             </button>
@@ -606,9 +615,9 @@ export default function AdminPage() {
             <SectionCard title="Tech Stack" subtitle="Manage skills shown on the 3D keyboard">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {data.skills.map((skill, i) => (
-                  <div key={skill.id} className="p-4 border border-white/10 rounded-xl bg-white/5 space-y-4">
+                  <div key={skill.id} className="p-4 border border-slate-200 dark:border-white/10 rounded-xl bg-white dark:bg-white/5 space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-mono text-white/30 truncate flex-1 mr-2">ID: {skill.id}</span>
+                      <span className="text-xs font-mono dark:text-white/30 text-slate-500 truncate flex-1 mr-2">ID: {skill.id}</span>
                       <button
                         onClick={() => {
                           const updated = data.skills.filter((_, idx) => idx !== i);
@@ -678,7 +687,7 @@ export default function AdminPage() {
                     ],
                   })
                 }
-                className="w-full border border-dashed border-white/20 hover:border-indigo-500/50 text-white/40 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
+                className="w-full border border-dashed border-slate-200 dark:border-white/20 hover:border-indigo-500/50 dark:text-white/40 text-slate-500 hover:text-indigo-400 rounded-xl py-4 text-sm transition-all flex items-center justify-center gap-2"
               >
                 <span className="text-lg">+</span> Add New Skill
               </button>
@@ -704,11 +713,11 @@ function SectionCard({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+    <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl p-6">
       <div className="flex items-start justify-between mb-5">
         <div>
-          <h2 className="font-semibold text-white text-base">{title}</h2>
-          {subtitle && <p className="text-xs text-white/40 mt-0.5">{subtitle}</p>}
+          <h2 className="font-semibold text-slate-900 dark:text-white text-base">{title}</h2>
+          {subtitle && <p className="text-xs dark:text-white/40 text-slate-500 mt-0.5">{subtitle}</p>}
         </div>
         {action}
       </div>
@@ -728,12 +737,12 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm text-white/60 mb-2">{label}</label>
+      <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">{label}</label>
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+        className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
       />
     </div>
   );
@@ -752,12 +761,12 @@ function TextareaField({
 }) {
   return (
     <div>
-      <label className="block text-sm text-white/60 mb-2">{label}</label>
+      <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">{label}</label>
       <textarea
         rows={rows}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm resize-none"
+        className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm resize-none"
       />
     </div>
   );
@@ -786,16 +795,16 @@ function ImageUploadField({
 
   return (
     <div>
-      <label className="block text-sm text-white/60 mb-2">{label}</label>
+      <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">{label}</label>
       <div className="flex items-center gap-4">
         {value.startsWith("data:image") ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={value} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-white/10" />
+          <img src={value} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-slate-200 dark:border-white/10" />
         ) : value ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={value} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-white/10" />
+          <img src={value} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-slate-200 dark:border-white/10" />
         ) : (
-          <div className="w-16 h-16 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-white/40">
+          <div className="w-16 h-16 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs dark:text-white/40 text-slate-500">
             None
           </div>
         )}
@@ -806,7 +815,7 @@ function ImageUploadField({
             onChange={handleFileChange}
             className="hidden"
           />
-          <div className="w-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-indigo-500 rounded-xl px-4 py-3 text-white transition-all text-sm flex items-center justify-center">
+          <div className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:dark:bg-white/10 bg-black/10 hover:border-indigo-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white transition-all text-sm flex items-center justify-center">
             Upload Base64 Image
           </div>
         </label>
@@ -851,15 +860,15 @@ function MultiImageUploadField({
 
   return (
     <div className="md:col-span-2">
-      <label className="block text-sm text-white/60 mb-2">{label}</label>
+      <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">{label}</label>
       <div className="flex flex-wrap gap-4 items-center">
         {values.map((val, idx) => (
           <div key={idx} className="relative group">
             {val.startsWith("data:image") || val ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={val} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-white/10" />
+              <img src={val} alt="Preview" className="w-16 h-16 object-cover rounded-lg border border-slate-200 dark:border-white/10" />
             ) : (
-              <div className="w-16 h-16 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs text-white/40">
+              <div className="w-16 h-16 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs dark:text-white/40 text-slate-500">
                 Invalid
               </div>
             )}
@@ -880,7 +889,7 @@ function MultiImageUploadField({
             onChange={handleFileChange}
             className="hidden"
           />
-          <div className="w-16 h-16 rounded-lg bg-white/5 border border-white/10 hover:border-indigo-500 border-dashed flex items-center justify-center text-2xl text-white/40 hover:text-indigo-400 transition-all">
+          <div className="w-16 h-16 rounded-lg bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-indigo-500 border-dashed flex items-center justify-center text-2xl dark:text-white/40 text-slate-500 hover:text-indigo-400 transition-all">
             +
           </div>
         </label>
@@ -932,9 +941,9 @@ function SkillSelectorField({
   };
 
   return (
-    <div className="space-y-3 p-4 bg-white/5 border border-white/10 rounded-2xl">
+    <div className="space-y-3 p-4 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl">
       <div className="flex justify-between items-center">
-        <label className="text-sm font-medium text-white/80">{label}</label>
+        <label className="text-sm font-medium dark:text-white/80 text-black/80">{label}</label>
         <button
           onClick={() => setShowAddForm(!showAddForm)}
           className="text-xs text-indigo-400 hover:text-indigo-300 font-medium transition-all"
@@ -960,7 +969,7 @@ function SkillSelectorField({
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={skill.icon} alt={skill.label} className="w-full h-full object-contain" />
                   ) : (
-                    <span className="text-[10px] text-white/40">{id.slice(0, 3)}</span>
+                    <span className="text-[10px] dark:text-white/40 text-slate-500">{id.slice(0, 3)}</span>
                   )}
                 </div>
                 <div className="absolute -top-1 -right-1 bg-red-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
@@ -970,24 +979,24 @@ function SkillSelectorField({
             );
           })
         ) : (
-          <div className="text-xs text-white/20 italic py-2">No skills selected</div>
+          <div className="text-xs dark:text-white/20 text-slate-500 italic py-2">No skills selected</div>
         )}
       </div>
 
       {/* Dropdown Selection */}
       {!showAddForm && (
         <select
-          className="w-full bg-zinc-900 border border-white/10 rounded-xl px-3 py-2 text-sm text-white outline-none focus:ring-1 focus:ring-indigo-500/50 appearance-none cursor-pointer"
+          className="w-full bg-zinc-900 border border-slate-200 dark:border-white/10 rounded-xl px-3 py-2 text-sm text-slate-900 dark:text-white outline-none focus:ring-1 focus:ring-indigo-500/50 appearance-none cursor-pointer"
           value=""
           onChange={(e) => {
             if (e.target.value) toggleSkill(e.target.value);
           }}
         >
-          <option value="" disabled className="bg-zinc-900 text-white/50">Select existing skill…</option>
+          <option value="" disabled className="bg-zinc-900 dark:text-white/50 text-slate-500">Select existing skill…</option>
           {allSkills
             .filter((s) => !selectedIds.includes(s.id))
             .map((s) => (
-              <option key={s.id} value={s.id} className="bg-zinc-900 text-white">
+              <option key={s.id} value={s.id} className="bg-zinc-900 text-slate-900 dark:text-white">
                 {s.label}
               </option>
             ))}
@@ -996,7 +1005,7 @@ function SkillSelectorField({
 
       {/* Add New Skill Form */}
       {showAddForm && (
-        <div className="space-y-4 pt-2 border-t border-white/5">
+        <div className="space-y-4 pt-2 border-t border-slate-200 dark:border-white/5">
           <div className="grid grid-cols-2 gap-3">
             <Field
               label="Label"
@@ -1043,15 +1052,15 @@ function IconUploadField({
 
   return (
     <div className="col-span-2">
-      <label className="block text-sm text-white/60 mb-2">Icon</label>
+      <label className="block text-sm dark:text-white/60 text-slate-500 mb-2">Icon</label>
       <div className="flex items-start gap-3">
         {/* Live preview */}
-        <div className="w-14 h-14 flex-shrink-0 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+        <div className="w-14 h-14 flex-shrink-0 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
           {value ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={value} alt="icon preview" className="w-9 h-9 object-contain" />
           ) : (
-            <span className="text-white/20 text-xs text-center leading-tight">No icon</span>
+            <span className="dark:text-white/20 text-slate-500 text-xs text-center leading-tight">No icon</span>
           )}
         </div>
 
@@ -1078,7 +1087,7 @@ function IconUploadField({
             placeholder="…or paste an icon URL"
             value={value.startsWith("data:") ? "" : value}
             onChange={(e) => onChange(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
+            className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white dark:placeholder-white/40 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500 transition-all text-sm"
           />
         </div>
       </div>

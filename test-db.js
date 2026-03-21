@@ -114,7 +114,7 @@ async function run() {
     const data = JSON.parse(raw);
     await savePortfolioDataToDB(data);
     console.log("SUCCESS SAVE");
-  } catch(e) {
+  } catch (e) {
     console.error("ERROR SAVE:", e.message);
   }
 }
