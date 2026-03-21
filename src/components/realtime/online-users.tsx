@@ -147,11 +147,12 @@ const OnlineUsers = () => {
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            "w-80 min-h-[400px] sm:w-96 p-0 border-none shadow-2xl overflow-hidden rounded-xl mr-4 mb-4 flex flex-col",
+            "w-[calc(100vw-16px)] sm:w-80 md:w-96 p-0 border-none shadow-2xl overflow-hidden rounded-xl mr-2 sm:mr-4 mb-4 flex flex-col max-h-[80vh]",
             THEME.bg.primary,
             THEME.text.primary
           )}
           side="top"
+          align="end"
         >
           {/* Header */}
           <div className={cn("h-12 flex items-center justify-between px-4 shadow-sm border-b shrink-0", THEME.bg.secondary, THEME.border.primary)}>

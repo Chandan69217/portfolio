@@ -68,7 +68,7 @@ const Header = ({ loader }: HeaderProps) => {
           <GitHubStarsButton
             username={config.githubUsername}
             repo={config.githubRepo}
-            className="mr-4"
+            className="mr-4 hidden md:flex"
           />
         )}
         <Button
