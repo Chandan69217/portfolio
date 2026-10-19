@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"next dev\" \"node socket-server.js\"",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "prisma": "prisma generate",
     "start": "next start",
     "socket:start": "node socket-server.js",
