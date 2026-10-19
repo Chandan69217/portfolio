@@ -21,9 +21,9 @@ const ProjectsSection = () => {
   const projects = data?.projects || [];
 
   return (
-    <SectionWrapper id="projects" className="max-w-7xl mx-auto min-h-screen">
+    <SectionWrapper id="projects" className="max-w-7xl mx-auto">
       <SectionHeader id='projects' title="Projects" />
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {projects.map((project, index) => (
           <Modall key={project.src} project={project} />
         ))}

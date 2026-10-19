@@ -10,6 +10,7 @@ const Email = z.object({
   email: z.string().email({ message: "Email is invalid!" }),
   message: z.string().min(10, "Message is too short!"),
 });
+
 export async function POST(req: Request) {
   try {
     const config = await prisma.config.findFirst();
