@@ -51,8 +51,8 @@ function writeFallbackDataAsync(data: any) {
       .then(() => {
         fallbackCache = data;
       })
-      .catch(() => {});
-  } catch {}
+      .catch(() => { });
+  } catch { }
 }
 
 function isAuthenticated(req: NextRequest): boolean {
@@ -304,7 +304,7 @@ async function savePortfolioDataToDB(body: any) {
       etag: generateETag(updatedData),
       timestamp: Date.now(),
     };
-    writeFallbackDataAsync(updatedData);
+    // writeFallbackDataAsync(updatedData);
   } else {
     memoryCache = null;
   }
@@ -313,7 +313,7 @@ async function savePortfolioDataToDB(body: any) {
   try {
     revalidatePath("/");
     revalidatePath("/admin");
-  } catch {}
+  } catch { }
 
   return updatedData;
 }
