@@ -18,7 +18,7 @@ const ContactSection = () => {
   const config = data.config;
 
   return (
-    <SectionWrapper id="contact" className="min-h-screen max-w-7xl mx-auto ">
+    <SectionWrapper id="contact" className="min-h-screen max-w-7xl mx-auto mb-14">
       <SectionHeader id='contact' className="relative mb-14" title={
         <>
           LET&apos;S WORK <br />

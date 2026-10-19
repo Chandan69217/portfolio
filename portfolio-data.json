@@ -11,21 +11,17 @@
       "full-stack developer",
       "creative technologist",
       "web development",
-      "3D animations",
       "interactive websites",
       "web design",
-      "GSAP",
       "React",
-      "Next.js",
-      "Spline",
-      "Framer Motion"
+      "Next.js"
     ],
     "author": "Chandan Sharma",
     "email": "chandansharma69217@gmail.com",
-    "site": "https://www.google.com",
+    "site": "https://chandancodes.dpdns.org",
     "githubUsername": "chandan69217",
-    "githubRepo": "3d-portfolio",
-    "resumeUrl": "https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing",
+    "githubRepo": "portfolio",
+    "resumeUrl": "https://drive.google.com/file/d/1pqoSeYJZQCOC4QqwT9BcupRpo5co2yhR/view",
     "profilePic": "/assets/me.jpg",
     "snowfallEnabled": false,
     "snowfallColorLight": "#000000",
@@ -39,99 +35,8 @@
       "phone": ""
     }
   },
-  "experience": [
-    {
-      "id": 219,
-      "startDate": "Dec 2024",
-      "endDate": "Present",
-      "title": "Full Stack Engineer",
-      "company": "OmniNexus",
-      "description": [
-        "Developing scalable full-stack applications involved in complex systems.",
-        "Optimizing database performance and query efficiency.",
-        "Collaborating on architectural decisions and technical strategy."
-      ],
-      "skills": [
-        "nextjs",
-        "ts",
-        "postgres",
-        "docker",
-        "aws"
-      ]
-    },
-    {
-      "id": 220,
-      "startDate": "Apr 2022",
-      "endDate": "Dec 2024",
-      "title": "Freelance Developer",
-      "company": "Live & Learn",
-      "description": [
-        "Delivered custom web solutions for diverse clients.",
-        "Managed full project lifecycles from design to deployment.",
-        "Maintained high client satisfaction through effective communication."
-      ],
-      "skills": [
-        "react",
-        "nodejs",
-        "mongodb",
-        "tailwind",
-        "wordpress"
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "financepro",
-      "category": "Investment",
-      "title": "Finance Pro",
-      "src": "/assets/projects-screenshots/finance-pro/landing.png",
-      "screenshots": [
-        "landing.png"
-      ],
-      "live": "https://chandan69217.github.io/finnace-pro-react/",
-      "github": "https://github.com/Chandan69217/finnace-pro-react.git",
-      "description": "A modern investment & finance management platform with responsive design, investment plan explorer, and user dashboard.",
-      "skills": {
-        "frontend": [
-          "ts",
-          "nextjs",
-          "tailwind",
-          "reactQuery",
-          "react"
-        ],
-        "backend": [
-          "node",
-          "express",
-          "python",
-          "postgres"
-        ]
-      }
-    },
-    {
-      "id": "portfolio",
-      "category": "Portfolio",
-      "title": "My Portfolio",
-      "src": "/assets/projects-screenshots/portfolio/landing.png",
-      "screenshots": [
-        "landing.png"
-      ],
-      "live": "/",
-      "github": "https://github.com/Chandan69217/3d-portfolio.git",
-      "description": "A creative 3D portfolio website with interactive animations, Spline 3D elements, and a space theme.",
-      "skills": {
-        "frontend": [
-          "ts",
-          "nextjs",
-          "shadcn",
-          "aceternity",
-          "framerMotion",
-          "tailwind",
-          "spline"
-        ],
-        "backend": []
-      }
-    }
-  ],
+  "experience": [],
+  "projects": [],
   "skills": [
     {
       "id": "js",
