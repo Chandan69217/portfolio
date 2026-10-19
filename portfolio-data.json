@@ -26,17 +26,22 @@
     "githubUsername": "chandan69217",
     "githubRepo": "3d-portfolio",
     "resumeUrl": "https://drive.google.com/file/d/1O97WCk2DrO9x6SHOqf7LvRbmHkMgGIb4/view?usp=sharing",
+    "profilePic": "/assets/me.jpg",
+    "snowfallEnabled": false,
+    "snowfallColorLight": "#000000",
+    "snowfallColorDark": "#ffffff",
     "social": {
       "telegram": "https://t.me/chandan_03_09",
       "linkedin": "https://www.linkedin.com/in/chandan-sharma-744083263/",
       "instagram": "https://www.instagram.com/chandan_03_09/",
       "facebook": "https://www.facebook.com/chandan.chandanraj.94/",
-      "github": "https://github.com/Chandan69217"
+      "github": "https://github.com/Chandan69217",
+      "phone": ""
     }
   },
   "experience": [
     {
-      "id": 1,
+      "id": 219,
       "startDate": "Dec 2024",
       "endDate": "Present",
       "title": "Full Stack Engineer",
@@ -55,7 +60,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 220,
       "startDate": "Apr 2022",
       "endDate": "Dec 2024",
       "title": "Freelance Developer",
@@ -128,51 +133,6 @@
     }
   ],
   "skills": [
-    {
-      "id": "reactQuery",
-      "name": "reactQuery",
-      "label": "React Query",
-      "shortDescription": "Fetching data like a pro, no cap! 📡🔥",
-      "color": "#ff4154",
-      "icon": "https://raw.githubusercontent.com/TanStack/query/main/packages/query-core/media/logo/logo-96x96.png",
-      "order": 24
-    },
-    {
-      "id": "shadcn",
-      "name": "shadcn",
-      "label": "Shadcn UI",
-      "shortDescription": "copy-paste but make it fashion 🎨📜",
-      "color": "#000000",
-      "icon": "https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/favicon.ico",
-      "order": 25
-    },
-    {
-      "id": "aceternity",
-      "name": "aceternity",
-      "label": "Aceternity UI",
-      "shortDescription": "animations that go dummy hard 🌪️✨",
-      "color": "#ffffff",
-      "icon": "https://ui.aceternity.com/logo.png",
-      "order": 26
-    },
-    {
-      "id": "framerMotion",
-      "name": "framerMotion",
-      "label": "Framer Motion",
-      "shortDescription": "making things move, respectfuly! 🎈💫",
-      "color": "#0055ff",
-      "icon": "https://raw.githubusercontent.com/framer/motion/main/packages/framer-motion/media/logo.png",
-      "order": 27
-    },
-    {
-      "id": "spline",
-      "name": "spline",
-      "label": "Spline 3D",
-      "shortDescription": "3D in the web, we logic-ing! 🎮🕹️",
-      "color": "#f0db4f",
-      "icon": "https://spline.design/static/media/logo.9247d48d.png",
-      "order": 28
-    },
     {
       "id": "js",
       "name": "js",
@@ -388,6 +348,51 @@
       "color": "#6cc24a",
       "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
       "order": 23
+    },
+    {
+      "id": "reactQuery",
+      "name": "reactQuery",
+      "label": "React Query",
+      "shortDescription": "Fetching data like a pro, no cap! 📡🔥",
+      "color": "#ff4154",
+      "icon": "https://raw.githubusercontent.com/TanStack/query/main/packages/query-core/media/logo/logo-96x96.png",
+      "order": 24
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn",
+      "label": "Shadcn UI",
+      "shortDescription": "copy-paste but make it fashion 🎨📜",
+      "color": "#000000",
+      "icon": "https://raw.githubusercontent.com/shadcn-ui/ui/main/apps/www/public/favicon.ico",
+      "order": 25
+    },
+    {
+      "id": "aceternity",
+      "name": "aceternity",
+      "label": "Aceternity UI",
+      "shortDescription": "animations that go dummy hard 🌪️✨",
+      "color": "#ffffff",
+      "icon": "https://ui.aceternity.com/logo.png",
+      "order": 26
+    },
+    {
+      "id": "framerMotion",
+      "name": "framerMotion",
+      "label": "Framer Motion",
+      "shortDescription": "making things move, respectfuly! 🎈💫",
+      "color": "#0055ff",
+      "icon": "https://raw.githubusercontent.com/framer/motion/main/packages/framer-motion/media/logo.png",
+      "order": 27
+    },
+    {
+      "id": "spline",
+      "name": "spline",
+      "label": "Spline 3D",
+      "shortDescription": "3D in the web, we logic-ing! 🎮🕹️",
+      "color": "#f0db4f",
+      "icon": "https://spline.design/static/media/logo.9247d48d.png",
+      "order": 28
     }
   ]
 }

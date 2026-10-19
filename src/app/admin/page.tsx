@@ -66,6 +66,10 @@ export default function AdminPage() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
+        const json = await res.json().catch(() => ({}));
+        if (json.data) {
+          setData(json.data);
+        }
         showToast("Changes saved successfully!", "success");
       } else if (res.status === 401) {
         router.push("/admin/login");
